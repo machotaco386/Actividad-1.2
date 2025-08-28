@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios DOM</title>
+  <link rel="stylesheet" href="../CSS/estilo.css">
+</head>
+<body>
+
+  <h1>Manipulación del DOM - Ejercicios</h1>
+
+  <!-- ===== Ejercicio 1 ===== -->
+  <section class="ejercicio">
+    <h2>Ejercicio 1: En este ejemplo, seleccionaremos elementos del DOM usando diferentes métodos.</h2>
+    <p class="descripcion">
+      En este ejercicio aprenderás a seleccionar elementos del DOM utilizando 
+      distintos métodos como <code>getElementById</code>, <code>getElementsByClassName</code>, 
+      <code>getElementsByTagName</code>, y <code>querySelector</code>.
+    </p>
+
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/ejercicio1.PNG" alt="Código del ejercicio 1">
+      </div>
+
+      <!-- Código en ejecución -->
+      <div class="codigo-ejecucion">
+        <div id="myDiv" class="myClass">Hello, World!</div>
+        <button id="changeText">Change Text</button>
+
+        <div id="resultado"></div>
+
+        <script>
+          // Seleccionar un elemento por ID
+          const myDiv = document.getElementById('myDiv');
+          document.getElementById("resultado").innerHTML += "<p><b>myDiv:</b> " + myDiv.innerHTML + "</p>";
+
+          // Seleccionar elementos por clase
+          const elementsByClass = document.getElementsByClassName('myClass');
+          document.getElementById("resultado").innerHTML += "<p><b>elementsByClass:</b> " + elementsByClass[0].innerHTML + "</p>";
+
+          // Seleccionar elementos por etiqueta
+          const elementsByTag = document.getElementsByTagName('div');
+          document.getElementById("resultado").innerHTML += "<p><b>elementsByTag:</b> " + elementsByTag.length + " elementos</p>";
+
+          // Seleccionar un elemento con querySelector
+          const queryElement = document.querySelector('#myDiv');
+          document.getElementById("resultado").innerHTML += "<p><b>queryElement:</b> " + queryElement.innerHTML + "</p>";
+
+          // Seleccionar todos los elementos con querySelectorAll
+          const queryAllElements = document.querySelectorAll('div');
+          document.getElementById("resultado").innerHTML += "<p><b>queryAllElements:</b> " + queryAllElements.length + " elementos</p>";
+        </script>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

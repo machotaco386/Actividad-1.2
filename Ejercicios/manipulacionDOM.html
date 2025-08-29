@@ -10,52 +10,205 @@
 
   <h1>Manipulación del DOM - Ejercicios</h1>
 
-  <!-- ===== Ejercicio 1 ===== -->
+   <!-- Ejercicio 2 -->
   <section class="ejercicio">
-    <h2>Ejercicio 1: En este ejemplo, seleccionaremos elementos del DOM usando diferentes métodos.</h2>
-    <p class="descripcion">
-      En este ejercicio aprenderás a seleccionar elementos del DOM utilizando 
-      distintos métodos como <code>getElementById</code>, <code>getElementsByClassName</code>, 
-      <code>getElementsByTagName</code>, y <code>querySelector</code>.
-    </p>
+    <h2>Ejemplo 1</h2>
+    <p class="descripcion">En este ejemplo, seleccionaremos elementos del DOM usando diferentes métodos.</p>
 
     <div class="contenido">
-      <!-- Imagen del código -->
       <div class="codigo-img">
         <img src="../Imagenes/ejercicio1.PNG" alt="Código del ejercicio 1">
       </div>
-
-      <!-- Código en ejecución -->
       <div class="codigo-ejecucion">
         <div id="myDiv" class="myClass">Hello, World!</div>
         <button id="changeText">Change Text</button>
-
         <div id="resultado"></div>
 
         <script>
-          // Seleccionar un elemento por ID
-          const myDiv = document.getElementById('myDiv');
-          document.getElementById("resultado").innerHTML += "<p><b>myDiv:</b> " + myDiv.innerHTML + "</p>";
-
-          // Seleccionar elementos por clase
-          const elementsByClass = document.getElementsByClassName('myClass');
-          document.getElementById("resultado").innerHTML += "<p><b>elementsByClass:</b> " + elementsByClass[0].innerHTML + "</p>";
-
-          // Seleccionar elementos por etiqueta
-          const elementsByTag = document.getElementsByTagName('div');
-          document.getElementById("resultado").innerHTML += "<p><b>elementsByTag:</b> " + elementsByTag.length + " elementos</p>";
-
-          // Seleccionar un elemento con querySelector
-          const queryElement = document.querySelector('#myDiv');
-          document.getElementById("resultado").innerHTML += "<p><b>queryElement:</b> " + queryElement.innerHTML + "</p>";
-
-          // Seleccionar todos los elementos con querySelectorAll
-          const queryAllElements = document.querySelectorAll('div');
-          document.getElementById("resultado").innerHTML += "<p><b>queryAllElements:</b> " + queryAllElements.length + " elementos</p>";
+        const myDiv = document.getElementById('myDiv');
+        document.write("myDiv");
+        document.write(myDiv);
+        const elementsByClass = document.getElementsByClassName('myClass');
+        document.write("elementsByClass");
+        document.write(elementsByClass);
+        const elementsByTag = document.getElementsByTagName('div');
+        document.write("elementsByTag");
+        document.write(elementsByTag);
+        const queryElement = document.querySelector('#myDiv');
+        document.write("queryElement");
+        document.write(queryElement);
+        const queryAllElements = document.querySelectorAll('div');
+        document.write("queryAllElements");
+        document.write(queryAllElements);
         </script>
       </div>
     </div>
   </section>
 
+  <!-- Ejercicio 2 -->
+
+  <section class="ejercicio">
+   <h2>Ejemplo 2: Manipulación de Contenido y Estilos</h2>
+    <p class="descripcion">Aquí cambiaremos el texto y los estilos de un elemento del DOM</p>
+   <div class="contenido">
+     <div class="codigo-img"><img src="../Imagenes/ejercicio2.PNG"></div>
+     <div class="codigo-ejecucion">
+    <div id="myDiv2">Hello, World!</div>
+    <button id="changeText2">Change Text</button>
+    <button id="changeStyle">Change Style</button>
+        <script>
+            const myDiv2 = document.getElementById('myDiv2');
+            // Cambiar el texto del elemento
+            document.getElementById('changeText2').addEventListener('click', () => {
+                myDiv2.textContent = 'Text Changed!';
+            });
+            // Cambiar el estilo del elemento
+            document.getElementById('changeStyle').addEventListener('click', () => {
+                myDiv2.style.color = 'red';
+                myDiv2.style.fontSize = '24px';
+            });
+        </script>
+     </div>
+   </div>
+</section>
+
+  <!-- Ejercicio 3 -->
+
+  <section class="ejercicio">
+   <h2>Ejemplo 3: Eventos del DOM</h2>
+    <p class="descripcion">En este ejemplo, manejaremos eventos del DOM para interactuar con los elementos de la página</p>
+   <div class="contenido">
+     <div class="codigo-img"><img src="../Imagenes/ejercicio3.PNG"></div>
+     <div class="codigo-ejecucion">
+    <div id="myDiv3">Click me!</div>
+
+<script>
+    const myDiv3 = document.getElementById('myDiv3');
+
+    // Manejar el evento click
+    myDiv3.addEventListener('click', () => {
+        alert('Div clicked!');
+        myDiv3.style.backgroundColor = 'lightblue';
+    });
+
+    // Manejar el evento mouseover
+    myDiv3.addEventListener('mouseover', () => {
+        myDiv3.style.backgroundColor = 'yellow';
+    });
+
+    // Manejar el evento mouseout
+    myDiv3.addEventListener('mouseout', () => {
+        myDiv3.style.backgroundColor = '';
+    });
+</script>
+     </div>
+   </div>
+</section>
+
+  <!-- Ejercicio 4 -->
+
+  <section class="ejercicio">
+   <h2>Ejemplo 4: Crear una Página HTML Simple y Manipular el DOM con JavaScript</h2>
+    <p class="descripcion">Crea una página HTML con varios elementos y utiliza JavaScript para realizar diversas manipulaciones</p>
+   <div class="contenido">
+     <div class="codigo-img"><img src="../Imagenes/ejercicio4.PNG"></div>
+     <div class="codigo-ejecucion">
+    <h1 id="title">My Web Page</h1>
+    <p class="text">This is a paragraph.</p>
+    <p class="text">This is another paragraph.</p>
+    <button id="changeContent">Change Content</button>
+    <button id="highlightText">Highlight Text</button>
+
+    <script>
+        // Cambiar el contenido del título
+        document.getElementById('changeContent').addEventListener('click', () => {
+            document.getElementById('title').textContent = 'Content Changed!';
+        });
+
+        // Resaltar todos los párrafos
+        document.getElementById('highlightText').addEventListener('click', () => {
+            const paragraphs = document.querySelectorAll('.text');
+            paragraphs.forEach(p => {
+                p.classList.toggle('highlight');
+            });
+        });
+    </script>
+     </div>
+   </div>
+</section>
+
+<!-- Ejercicio -->
+
+  <section class="ejercicio">
+   <h2>Ejercicio</h2>
+    <p class="descripcion">Crear una página HTML simple y usar JavaScript para seleccionar elementos del DOM, manipular su contenido y estilos, y manejar eventos del DOM</p>
+       <div class="instrucciones">
+     <h3>Instrucciones:</h3>
+     <ol>
+       <li>Crear una página HTML básica:
+         <ul>
+           <li>Incluir un encabezado (h1).</li>
+           <li>Agregar un párrafo (p).</li>
+           <li>Agregar una lista desordenada (ul) con varios elementos (li).</li>
+           <li>Incluir un botón (button).</li>
+         </ul>
+       </li>
+       <li>Usar JavaScript para manipular el DOM:
+         <ul>
+           <li>Seleccionar elementos del DOM usando <code>getElementById</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code>, <code>querySelector</code> y <code>querySelectorAll</code>.</li>
+           <li>Cambiar el contenido del encabezado y del párrafo.</li>
+           <li>Cambiar los estilos de los elementos de lista.</li>
+           <li>Agregar y quitar clases CSS a los elementos.</li>
+         </ul>
+       </li>
+       <li>Manejar eventos del DOM:
+         <ul>
+           <li>Agregar un evento <code>click</code> al botón para cambiar el contenido del encabezado.</li>
+           <li>Agregar eventos <code>mouseover</code> y <code>mouseout</code> a los elementos de la lista para cambiar su color de fondo cuando el mouse pasa sobre ellos.</li>
+         </ul>
+       </li>
+     </ol>
+   </div>
+   <div class="contenido">
+     <div class="codigo-img"><img src="../Imagenes/ejercicio5.PNG"></div>
+     <div class="codigo-ejecucion">
+    <h1 id="titulo">Nochistlan de Mejia</h1>
+    <img src="../Imagenes/Nochistlan.jpg" alt="Nochistlan" width="400px" style="display: block; margin: auto;">
+    <p class="pNochistlan">Nochistlán de Mejía es un pueblo histórico en el sur de Zacatecas. Es conocido como la "Primera Guadalajara" porque ahí se fundó por primera vez esa ciudad en 1532, antes de que fuera movida a su ubicación actual en Jalisco. </p>
+    <p class="pNochistlan">Fue también un escenario central de la feroz Guerra del Mixtón, donde los indígenas caxcanes, liderados por Tenamaxtle, se rebelaron contra los españoles.</p>
+    <p class="pNochistlan">Hoy, el pueblo ofrece una atractiva arquitectura colonial, un museo local y una vista panorámica increíble desde lo alto del Cerro de la Cruz, a la que se llega subiendo una escalinata de más de 500 escalones.</p>
+    <p class="pNochistlan">Algunos de sus lugares turisticos son: </p>
+    <ul>
+        <li>Cerro de la cruz</li>
+        <li>Palacio municipal y Plaza</li>
+        <li>Templo de San Francisco de Asis</li>
+        <li>Acueducto los Arcos</li>
+        <li>Instituto tecnologico superior de Nochistlan</li>
+    </ul>
+    <button id="btn">Cambiar encabezado</button>
+
+    <script>
+        // Cambiar el contenido del título
+        document.getElementById('btn').addEventListener('click', () => {
+            document.getElementById('titulo').textContent = 'Bachistlan';
+        });
+
+        // Seleccionar todos los párrafos por etiqueta
+        
+        const parrafoNochistlan = document.querySelectorAll('.pNochistlan');
+
+        parrafoNochistlan.forEach(parrafo => {
+            parrafo.addEventListener('mouseover', () => {
+                parrafo.classList.add('highlight');
+            });
+
+            parrafo.addEventListener('mouseout', () => {
+                parrafo.classList.remove('highlight');
+            });
+        });
+    </script>
+     </div>
+   </div>
+</section>
 </body>
 </html>

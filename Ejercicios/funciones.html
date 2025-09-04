@@ -207,5 +207,53 @@
     </div>
   </div>
 </section>
+
+<!-- Ejercicio 1 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Mayor de 2 números</h2>
+  <p class="descripcion">Este ejercicio se centra en la creación de funciones para encontrar el mayor de dos números, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/funciones4.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion Tradicional</h2>
+       <button id="accion7">Comparar numeros</button>
+       <p id="resultado7"></p>
+       <script>
+        function mayor(num1, num2) {
+          if (num1 > num2) {
+            return num1;
+          } else {
+            return num2;
+          }
+        }
+        document.getElementById('accion7').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = mayor(num1, num2);
+          document.getElementById('resultado7').textContent = "Mayor = " + resultado;
+        });
+       </script>
+
+    </div>
+    <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion flecha</h2>
+       <button id="accion8">Comparar numeros</button>
+       <p id="resultado8"></p>
+       <script>
+        
+       </script>
+    </div>
+  </div>
+</section>
 </body>
 </html>

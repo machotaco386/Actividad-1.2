@@ -8,9 +8,10 @@
 /* ===== Estilos globales ===== */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background: url("../Imagenes/fondo.jpg") no-repeat center center fixed;
+  background-size: cover;
   color: #333;
-  padding: 20px;
+  padding: 0 150px;
   line-height: 1.6;
 }
 
@@ -19,7 +20,7 @@ h1 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 2.2rem;
-  color: #222;
+  color: #ffffff;
   animation: fadeInDown 1s ease;
 }
 

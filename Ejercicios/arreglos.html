@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de arreglos y objetos</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+</head>
+<body>
+
+    <a href="../index.html" class="btn-regresar">⬅ Regresar al inicio</a>
+    <h1>Manejo de arreglos y objetos en JavaScript</h1>
+
+    <!-- Ejemplo 1 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Iteracion sobre arreglos</h2>
+  <p class="descripcion">
+Una técnica fundamental en el manejo de arreglos es la iteración. Veamos un ejemplo usando un bucle for:</p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/arreglos1.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcionamiento de codigo</h2>
+       <script>
+        const frutas = ["manzana", "banana", "naranja", "uva"];
+        for (let i = 0; i < frutas.length; i++) {
+          document.write(frutas[i] + "<br>");
+        }
+       </script>
+  </div>
+</section>
+
+    <!-- Ejemplo 2 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Metodo de arreglos Map</h2>
+  <p class="descripcion">
+El método map <b>crea un nuevo arreglo</b> con los resultados de llamar a una función para cada elemento. Por ejemplo:  </p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/arreglos2.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcionamiento de codigo</h2>
+       <script>
+        const numeros = [1, 2, 3, 4, 5];
+        const numerosDuplicados = numeros.map(num => num * 2);
+        document.write("Números duplicados: ");
+        document.write(numerosDuplicados);
+       </script>
+  </div>
+</section>
+
+    <!-- Ejemplo 3 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Metodo de arreglos Filter</h2>
+  <p class="descripcion">
+El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumplan la condición implementada por la función dada. Por ejemplo:  </p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/arreglos3.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcionamiento de codigo</h2>
+       <script>
+        const numeros1 = [1, 2, 3, 4, 5];
+        const numerosFiltrados = numeros.filter(num => num > 2);
+        document.write("Números filtrados: ");
+        document.write(numerosFiltrados);
+       </script>
+  </div>
+</section>
+
+    <!-- Ejemplo 3 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Metodo de arreglos Reduce</h2>
+  <p class="descripcion">
+    El método reduce <b>aplica una función a un acumulador y a cada valor de la matriz (de izquierda a derecha)</b> para reducirlo a un solo valor. Por ejemplo:
+ </p>
+ <p>
+     <code>
+    arr.reduce((acumulador, valorActual) => {
+      return acumulador + valorActual;
+    }, valorinicial);
+    </code>
+ </p><br>
+ <p>
+    En <code>reduce()</code>, el primer parámetro de la función es siempre el acumulador, que mantiene el valor total hasta ese punto, mientras que el segundo parámetro es el valor actual del arreglo en la iteración. Lo que haces con esos valores depende de la operación que quieras realizar.
+ </p><br><br>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/arreglos4.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcionamiento de codigo</h2>
+       <script>
+        const suma = numeros.reduce((total, num) => 
+        total + num, 0);
+        document.write(suma);
+       </script>
+  </div>
+</section>
+
+    <!-- Ejercicio 1 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Encontrar el mayor de un numero</h2>
+  <p class="descripcion">
+Veamos un ejercicio resuelto para encontrar el mayor número en un arreglo: 
+  </p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/arreglos5.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcionamiento de codigo</h2>
+       <script>
+
+       </script>
+  </div>
+</section>
+</body>
+</html>

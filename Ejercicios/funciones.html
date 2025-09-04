@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones en JS</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+</head>
+<body>
+    <a href="../index.html" class="btn-regresar">⬅ Regresar al inicio</a>
+    <h1>Funciones de JavaScript</h1>
+
+    <!-- Ejemplo 1 -->
+
+   <section class="ejercicio">
+   <h2>Suma de dos numeros</h2> 
+   <p class="descripcion">
+     Este ejercicio se centra en la creación de funciones para sumar dos números, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.
+   </p>
+   <div class="contenido">
+     <div class="codigo-img">
+       <img src="../Imagenes/funciones1.PNG" alt="Código del ejercicio">
+     </div>
+
+     <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+    <h2>Usando Función Tradicional</h2>
+    <button id="accion">iniciar suma</button>
+    <p id="resultado"></p>
+
+    <script>
+        function sumar(a, b) {
+        return a + b;
+        }
+        // Evento para el botón
+        document.getElementById('accion').addEventListener('click', () => {
+        let num1 = parseFloat(prompt("Ingresa el primer número:"));
+        let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+        let suma = sumar(num1, num2);
+        document.getElementById('resultado').textContent = "Resultado = " + suma;
+        });
+    </script>
+    </div>
+     <div class="codigo-ejecucion">
+       <h2>Usando Funcion Flecha</h2>
+        <button id="accion2">iniciar suma</button>
+        <p id="resultado2"></p>
+       <script>
+        const sumarflecha = (a,b) => a+b;
+        // Evento para el botón
+        document.getElementById('accion2').addEventListener('click', () => {
+        let num1 = parseFloat(prompt("Ingresa el primer número:"));
+        let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+        let suma = sumar(num1, num2);
+        document.getElementById('resultado2').textContent = "Resultado = " + suma;
+        });
+       </script>
+     </div>
+   </div>
+</section>
+
+<!-- Ejemplo 2 -->
+
+<section class="ejercicio">
+   <h2>Division de dos numeros</h2>
+   <!-- Descripción -->
+   <p class="descripcion">
+     Manejando el caso de división por cero.
+   </p>
+   <!-- Contenido -->
+   <div class="contenido">
+     <!-- Imagen del código -->
+     <div class="codigo-img">
+       <img src="../Imagenes/funciones2.PNG" alt="Código del ejercicio">
+     </div>
+
+     <!-- Ejecución -->
+     <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion Tradicional</h2>
+       <button id="accion3">Realizar Division</button>
+       <p id="resultado3"></p>
+       <script>
+        document.getElementById('accion').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = dividir(num1, num2);
+          document.getElementById('resultado3').textContent = "Resultado = " + resultado;
+        });
+       </script>
+     </div>
+     <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion flecha</h2>
+       <button id="accion4">Realizar Division</button>
+       <p id="resultado4"></p>
+       <script>
+        document.getElementById('accion4').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = dividirFlecha(num1, num2);
+          document.getElementById('resultado4').textContent = "Resultado = " + resultado;
+        });
+       </script>
+     </div>
+   </div>
+</section>
+
+<!-- Ejemplo 3 -->
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Potencia de dos numeros</h2>
+  <p class="descripcion">Este ejercicio se centra en la creación de funciones para calcular la potencia de un número, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/funciones3.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion Tradicional</h2>
+       <button id="accion5">Realizar potencia</button>
+        <p id="resultado5"></p>
+       <script>
+        function potencia(base, exponente) {
+          return Math.pow(base, exponente);
+        }
+        document.getElementById('accion5').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = potencia(num1, num2);
+          document.getElementById('resultado5').textContent = "Resultado = " + resultado;
+        });
+       </script>
+    </div>
+    <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion flecha</h2>
+       <button id="accion6">Realizar potencia</button>
+       <p id="resultado6"></p>
+       <script>
+        const potenciaFlecha = (base, exponente) => 
+          Math.pow(base, exponente);
+
+        document.getElementById('accion6').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = potenciaFlecha(num1, num2);
+          document.getElementById('resultado6').textContent = "Resultado = " + resultado;
+        });
+       </script>
+    </div>
+  </div>
+</section>
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Mayor de 2 números</h2>
+  <p class="descripcion">Este ejercicio se centra en la creación de funciones para encontrar el mayor de dos números, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/funciones4.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion Tradicional</h2>
+       <button id="accion7">Comparar numeros</button>
+       <p id="resultado7"></p>
+       <script>
+        function mayor(num1, num2) {
+          if (num1 > num2) {
+            return num1;
+          } else {
+            return num2;
+          }
+        }
+        document.getElementById('accion7').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = mayor(num1, num2);
+          document.getElementById('resultado7').textContent = "Mayor = " + resultado;
+        });
+       </script>
+
+    </div>
+    <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion flecha</h2>
+       <button id="accion8">Comparar numeros</button>
+       <p id="resultado8"></p>
+       <script>
+        const mayorFlecha = (num1, num2) => (num1 > num2 ? num1 : num2);
+
+        document.getElementById('accion8').addEventListener('click', () => {
+          let num1 = parseFloat(prompt("Ingresa el primer número:"));
+          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+          let resultado = mayorFlecha(num1, num2);
+          document.getElementById('resultado8').textContent = "Mayor = " + resultado;
+        });
+       </script>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -99,7 +99,7 @@ solicitudes de red o temporizadores.
                 // Crear una nueva promesa
                 const miPromesa = new Promise((resolve, reject) => {
                     // Simular una operación asíncrona (por ejemplo, una solicitud de red)
-                    const exito = true; // Cambia a false para simular un error
+                    const exito = false; // Cambia a false para simular un error
                     
                     if (exito) {
                         resolve("Operación exitosa!"); // Se resuelve la promesa
@@ -114,7 +114,7 @@ solicitudes de red o temporizadores.
                         document.write(`<p id="resultado">${resultado}</p>`); // Manejar el resultado si la promesa se resuelve
                     })
                     .catch((error) => {
-                        console.log(error); // Manejar el error si la promesa se rechaza
+                        document.write(`<p id="resultado">${error}</p>`); // Manejar el error si la promesa se rechaza
                     });
             </script>
         </div>
@@ -348,4 +348,13 @@ llamarApiConAsyncAwait();
 </section>
 
 </body>
+
+<script>
+            for (let img of document.getElementsByClassName('codigo-img')) {
+            img.addEventListener('click', (e) => {
+                console.log("Clic en:", e.target);
+                e.target.requestFullscreen();
+            });
+          }
+</script>
 </html>

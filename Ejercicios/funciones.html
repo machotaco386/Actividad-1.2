@@ -51,7 +51,7 @@
         document.getElementById('accion2').addEventListener('click', () => {
         let num1 = parseFloat(prompt("Ingresa el primer número:"));
         let num2 = parseFloat(prompt("Ingresa el segundo número:"));
-        let suma = sumar(num1, num2);
+        let suma = sumarflecha(num1, num2);
         document.getElementById('resultado2').textContent = "Resultado = " + suma;
         });
        </script>
@@ -81,7 +81,7 @@
        <button id="accion3">Realizar Division</button>
        <p id="resultado3"></p>
        <script>
-        document.getElementById('accion').addEventListener('click', () => {
+        document.getElementById('accion3').addEventListener('click', () => {
           let num1 = parseFloat(prompt("Ingresa el primer número:"));
           let num2 = parseFloat(prompt("Ingresa el segundo número:"));
           let resultado = dividir(num1, num2);
@@ -212,7 +212,73 @@
 
 <section class="ejercicio">
   <!-- Descripción -->
-  <h2>Mayor de 2 números</h2>
+  <h2>Ejercicio 1</h2>
+  <p class="descripcion">En este ejercicio se centra en la creación de funciones para calcular el factorial de un número, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
+  <!-- Contenido -->
+
+  <div class="contenido">
+    <!-- Imagen del código -->
+    <div class="codigo-img">
+      <img src="../Imagenes/funciones_ejemplo1.PNG" alt="Código del ejercicio">
+    </div>
+  <!-- Ejecución -->
+    <div class="codigo-ejecucion">
+      <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion Tradicional</h2>
+       <button id="accion9">Calcular factorial</button>
+       <p id="resultado9"></p>
+       <script>
+        // Funcion tradicional recursiva
+          function factorial(n) {
+              if (n === 0 || n === 1) {
+                  return 1;
+              }
+              return n * factorial(n - 1);
+          }
+          document.getElementById('accion9').addEventListener('click', () => {
+              let num = parseInt(prompt("Ingresa un número para calcular su factorial:"));
+              if (isNaN(num) || num < 0) {
+                  document.getElementById('resultado9').textContent = "Por favor, ingresa un número entero no negativo.";
+              } else {
+                  let resultado = factorial(num);
+                  document.getElementById('resultado9').textContent = "Factorial de " + num + " es " + resultado;
+              }
+          });
+       </script>
+
+    </div>
+    <div class="codigo-ejecucion">
+       <!-- Aquí pegas tu código en vivo -->
+       <h2>Funcion flecha</h2>
+       <button id="accion10">Calcular factorial</button>
+       <p id="resultado10"></p>
+       <script>
+        // Funcion flecha recursiva
+        const factorialFlecha = (n) => {
+            if (n === 0 || n === 1) {
+                return 1;
+            }
+            return n * factorialFlecha(n - 1);
+        };
+        document.getElementById('accion10').addEventListener('click', () => {
+            let num = parseInt(prompt("Ingresa un número para calcular su factorial:"));
+            if (isNaN(num) || num < 0) {
+                document.getElementById('resultado10').textContent = "Por favor, ingresa un número entero no negativo.";
+            } else {
+                let resultado = factorialFlecha(num);
+                document.getElementById('resultado10').textContent = "Factorial de " + num + " es " + resultado;
+            }
+        });
+       </script>
+    </div>
+  </div>
+</section>
+
+<!-- Ejercicio 2 -->
+
+<section class="ejercicio">
+  <!-- Descripción -->
+  <h2>Ejercicio 2</h2>
   <p class="descripcion">Este ejercicio se centra en la creación de funciones para encontrar el mayor de dos números, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
   <!-- Contenido -->
 
@@ -225,21 +291,23 @@
     <div class="codigo-ejecucion">
       <!-- Aquí pegas tu código en vivo -->
        <h2>Funcion Tradicional</h2>
-       <button id="accion7">Comparar numeros</button>
-       <p id="resultado7"></p>
+       <button id="accion11">Comparar numeros</button>
+       <p id="resultado11"></p>
        <script>
-        function mayor(num1, num2) {
-          if (num1 > num2) {
-            return num1;
+        function fibonacci(n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+        document.getElementById('accion11').addEventListener('click', () => {
+          let num = parseInt(prompt("Ingresa un número para calcular su Fibonacci:"));
+          if (isNaN(num) || num < 0) {
+              document.getElementById('resultado11').textContent = "Por favor, ingresa un número entero no negativo.";
           } else {
-            return num2;
+              let resultado = fibonacci(num);
+              document.getElementById('resultado11').textContent = "Fibonacci de " + num + " es " + resultado;
           }
-        }
-        document.getElementById('accion7').addEventListener('click', () => {
-          let num1 = parseFloat(prompt("Ingresa el primer número:"));
-          let num2 = parseFloat(prompt("Ingresa el segundo número:"));
-          let resultado = mayor(num1, num2);
-          document.getElementById('resultado7').textContent = "Mayor = " + resultado;
         });
        </script>
 
@@ -247,13 +315,35 @@
     <div class="codigo-ejecucion">
        <!-- Aquí pegas tu código en vivo -->
        <h2>Funcion flecha</h2>
-       <button id="accion8">Comparar numeros</button>
-       <p id="resultado8"></p>
+       <button id="accion12">Comparar numeros</button>
+       <p id="resultado12"></p>
        <script>
-        
+        const fibonacciflecha = (n) => {
+            if (n <= 1) {
+                return n;
+            }
+            return fibonacciflecha(n - 1) + fibonacciflecha(n - 2);
+        };
+        document.getElementById('accion12').addEventListener('click', () => {
+          let num = parseInt(prompt("Ingresa un número para calcular su Fibonacci:"));
+          if (isNaN(num) || num < 0) {
+              document.getElementById('resultado12').textContent = "Por favor, ingresa un número entero no negativo.";
+          } else {
+              let resultado = fibonacciflecha(num);
+              document.getElementById('resultado12').textContent = "Fibonacci de " + num + " es " + resultado;
+          }
+        });
        </script>
     </div>
   </div>
 </section>
 </body>
+<script>
+            for (let img of document.getElementsByClassName('codigo-img')) {
+            img.addEventListener('click', (e) => {
+                console.log("Clic en:", e.target);
+                e.target.requestFullscreen();
+            });
+          }
+</script>
 </html>

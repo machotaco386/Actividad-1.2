@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+</head>
+<body>
+    <a href="../index.html" class="btn-regresar">⬅ Regresar al inicio</a>
+    <h1>Promesas y asincronia</h1>
+
+<section class="ejercicio">
+    <h2>Callback 1</h2>
+    <p class="descripcion">
+        Un callback en JavaScript es una función que se pasa como argumento a otra función y se
+ejecuta después de que se completa la tarea de la función que la recibió. Los callbacks son
+una parte fundamental de la programación asíncrona en JavaScript, permitiendo que el
+código continúe ejecutándose mientras se espera que se completen operaciones como
+solicitudes de red o temporizadores.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/callback1.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <p id="resultado1">Suma de dos numeros</p>
+            <script>
+                function sumar(a, b, callback) {
+                    const resultado = a + b;
+                    callback(resultado);
+                }
+
+                function mostrarResultado(resultado) {
+                    // 1. Seleccionamos el elemento por su ID
+                    const pResultado = document.getElementById('resultado1');
+                    // 2. Modificamos su contenido
+                    pResultado.textContent = "La suma es: " + resultado;
+                }
+
+                sumar(5, 10, mostrarResultado);
+            </script>
+        </div>
+    </div>
+</section>
+
+<section class="ejercicio">
+    <h2>Callback 2</h2>
+    <p class="descripcion">
+        Otro ejemplo común de callback es en operaciones asíncronas, como obtener datos de un servidor.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/callback2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <p id="resultado2">Ejemplo de edad</p>
+            <p id="resultado3"></p>
+            <script>
+                function obtenerDatos(callback) {
+                    setTimeout(() => {
+                        const datos = { nombre: "Juan", edad: 30 };
+                        callback(datos);
+                    }, 2000);
+                }
+
+                function mostrarDatos(datos) {
+                    // 1. Seleccionamos el elemento por su ID
+                    const pDatos = document.getElementById('resultado3');
+                    // 2. Modificamos su contenido
+                    pDatos.textContent = `Nombre: ${datos.nombre}, Edad: ${datos.edad}`;
+                }
+
+                obtenerDatos(mostrarDatos);
+            </script>
+        </div>
+    </div>
+</section>
+
+<!-- Ejemplo de promesas -->
+
+<section class="ejercicio">
+    <h2>Promesas 1</h2>
+    <p class="descripcion">
+        Una promesa en JavaScript es un objeto que representa la eventual finalización (o falla) de
+        una operación asíncrona y su valor resultante. Las promesas son una forma de manejar
+        operaciones asíncronas de manera más legible y manejable que los callbacks.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/promesas1.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <p id="resultado"></p>
+            <script>
+                // Crear una nueva promesa
+                const miPromesa = new Promise((resolve, reject) => {
+                    // Simular una operación asíncrona (por ejemplo, una solicitud de red)
+                    const exito = true; // Cambia a false para simular un error
+                    
+                    if (exito) {
+                        resolve("Operación exitosa!"); // Se resuelve la promesa
+                    } else {
+                        reject("Ocurrió un error."); // Se rechaza la promesa
+                    }
+                });
+                
+                // Usar la promesa
+                miPromesa
+                    .then((resultado) => {
+                        document.write(`<p id="resultado">${resultado}</p>`); // Manejar el resultado si la promesa se resuelve
+                    })
+                    .catch((error) => {
+                        console.log(error); // Manejar el error si la promesa se rechaza
+                    });
+            </script>
+        </div>
+    </div>
+</section>
+
+<!-- Ejemplo de promesas 2 -->
+
+<section class="ejercicio">
+    <h2>Promesas 2</h2>
+    <p class="descripcion">
+        Tomando datos de una API de prueba de internet.
+        Utilizaremos esta api de prueba: <code>https://jsonplaceholder.typicode.com/posts</code>
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/promesas2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <p>Abre la consola...</p>    
+            <script>
+               function obtenerPosts() {
+                    return new Promise((resolve, reject) => {
+                        fetch('https://jsonplaceholder.typicode.com/posts')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la llamada a la API');
+                                }
+                                return response.json();
+                            })
+                            .then(data => resolve(data))
+                            .catch(error => reject(error));
+                    });
+                }
+
+                obtenerPosts()
+                    .then(posts => {
+                        console.log('Posts obtenidos:', posts);
+                    })
+                    .catch(error => {
+                        console.log('Error:', error);
+                    });
+            </script>
+        </div>
+    </div>
+</section>
+
+<!-- Ejemplo de promesas 3 -->
+
+<section class="ejercicio">
+    <h2>Promesas 3</h2>
+    <p class="descripcion">
+        Tomando datos de una API de prueba de internet.
+        Utilizaremos esta api de prueba: <code>https://jsonplaceholder.typicode.com/posts</code>
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/promesas2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <h3>Posts</h3>
+            <ul id="posts">   
+            </ul>
+            <script>
+                const obtenerPosts1 = () => {
+                    fetch('https://jsonplaceholder.typicode.com/posts')
+                        .then(response => response.json())
+                        .then(data => mostrarPosts(data))
+                        .catch(error => console.log('Error:', error));
+                };
+
+                // Función para mostrar los posts en el HTML
+                const mostrarPosts = (posts) => {
+                    const postsUl = document.getElementById('posts');
+                    postsUl.innerHTML = ''; // Limpiamos la lista antes de agregar nuevos posts
+                    posts.forEach(post => {
+                        const li = document.createElement('li');
+                        li.textContent = post.title;
+                        postsUl.appendChild(li);
+                    });
+                };
+                // Llamamos a la función para obtener y mostrar los posts
+                obtenerPosts1();
+        </script>
+        </div>
+    </div>
+</section>
+
+<!-- Asincronizacion 1 -->
+
+<section class="ejercicio">
+    <h2>Async - Await Ejercicio 1</h2>
+    <div class="instrucciones">
+        <p class="descripcion">
+            <b>async</b> y <b>await</b> son palabras clave que permiten escribir código asincrónico de manera
+            más clara y estructurada.
+            <ul>
+                <li><b>async: </b>Se usa para declarar una función asincrónica.</li>
+                <li><b>await: </b>Se usa dentro de una función asincrónica para esperar el resultado de una promesa</li>
+            </ul>
+        </p>
+        <p>
+            <pre>
+                <code>
+async function llamarApiConAsyncAwait() {
+    try {
+        let datos = await llamadaApi();
+        console.log(datos);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+llamarApiConAsyncAwait();
+                </code>
+            </pre>
+        </p>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/async1.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <p id="resultado">Abrir consola</p>
+            <script>
+                async function obtenerPostsConAsyncAwait() {
+                    try {
+                        let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+                        if (!response.ok) {
+                            throw new Error('Error en la llamada a la API');
+                        }
+                        let posts = await response.json();
+                        console.log('Posts obtenidos con Async: ', posts);
+                    } catch (error) {
+                        console.log('Error:', error);
+                    }
+                }
+
+                obtenerPostsConAsyncAwait();
+        </script>
+        </div>
+    </div>
+</section>
+
+
+<!-- Asincronizacion 2 -->
+
+<section class="ejercicio">
+    <h2>Async - Await Ejercicio 2</h2>
+    <div class="instrucciones">
+            <p class="descripcion">Manejo de la respuesta:</p> 
+            <ul>
+                <li>Verificamos si la respuesta es correcta con response.ok</li>
+                <li>Convertimos la respuesta en un objeto JavaScript con response.json(), que también devuelve una promesa.</li>
+            </ul>
+            <p class="descripcion">Promesas:</p>
+            <ul>
+                <li>Utilizamos .then() y .catch() para manejar la resolución y el rechazo de la promesa.</li>
+            </ul>
+            <p class="descripcion">async await </p>
+            <ul>
+                <li>await espera la resolución de la promesa.</li>
+                <li>Manejamos errores con un bloque try/catch.</li>
+            </ul>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/async2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <ul id="posts1">
+
+            </ul>
+            <script>
+            async function obtenerPostsConAsyncAwait() {
+                try {
+                    let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+                    if (!response.ok) {
+                        throw new Error('Error en la llamada a la API');
+                    }
+                    let posts = await response.json();
+                    mostrarPosts2(posts);
+                } catch (error) {
+                    console.log('Error:', error);
+                }
+            }
+
+            function mostrarPosts2(posts) {
+                const postsU2 = document.getElementById('posts1');
+                posts.forEach(post => {
+                    const li = document.createElement('li');
+                    li.textContent = post.title;
+                    postsU2.appendChild(li);
+                });
+            }
+
+            obtenerPostsConAsyncAwait();
+        </script>
+        </div>
+    </div>
+</section>
+
+<!-- Asincronizacion 2 -->
+
+<section class="ejercicio">
+    <h2>Async - Await Ejercicio 3 'Users'</h2>
+    <div class="instrucciones">
+        <p class="descripcion">El objetivo de este ejercicio es crear una página web que obtenga una lista de usuarios desde una API y muestre sus nombres en una lista. Los estudiantes deberán:</p> 
+            <ol>
+                <li>Crear un archivo HTML con un contenedor "ul" para mostrar los usuarios.</li>
+                <li>Escribir una función en JavaScript que realice una solicitud a la API https://jsonplaceholder.typicode.com/users.</li>
+            </ol>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/async2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <h3>Usuarios</h3>
+            <ul id="posts2">
+
+            </ul>
+            <script src="../JS/app.js"></script>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

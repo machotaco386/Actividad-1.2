@@ -32,7 +32,7 @@ Una técnica fundamental en el manejo de arreglos es la iteración. Veamos un ej
        <script>
         const frutas = ["manzana", "banana", "naranja", "uva"];
         for (let i = 0; i < frutas.length; i++) {
-          document.write(frutas[i] + "<br>");
+          document.write("<p id='resultado'>"+ frutas[i] +"</p>");
         }
        </script>
   </div>
@@ -60,7 +60,7 @@ El método map <b>crea un nuevo arreglo</b> con los resultados de llamar a una f
         const numeros = [1, 2, 3, 4, 5];
         const numerosDuplicados = numeros.map(num => num * 2);
         document.write("Números duplicados: ");
-        document.write(numerosDuplicados);
+        document.write("<p id='resultado'>"+ numerosDuplicados +"</p>");
        </script>
   </div>
 </section>
@@ -87,7 +87,7 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
         const numeros1 = [1, 2, 3, 4, 5];
         const numerosFiltrados = numeros.filter(num => num > 2);
         document.write("Números filtrados: ");
-        document.write(numerosFiltrados);
+        document.write("<p id='resultado'>"+ numerosFiltrados +"</p>");
        </script>
   </div>
 </section>
@@ -101,11 +101,11 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
     El método reduce <b>aplica una función a un acumulador y a cada valor de la matriz (de izquierda a derecha)</b> para reducirlo a un solo valor. Por ejemplo:
  </p>
  <p>
-     <code>
+     <div class="instrucciones"><code><pre>
     arr.reduce((acumulador, valorActual) => {
       return acumulador + valorActual;
     }, valorinicial);
-    </code>
+    </pre></code></div>
  </p><br>
  <p>
     En <code>reduce()</code>, el primer parámetro de la función es siempre el acumulador, que mantiene el valor total hasta ese punto, mientras que el segundo parámetro es el valor actual del arreglo en la iteración. Lo que haces con esos valores depende de la operación que quieras realizar.
@@ -124,7 +124,7 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
        <script>
         const suma = numeros.reduce((total, num) => 
         total + num, 0);
-        document.write(suma);
+        document.write("<p id='resultado'>"+ suma +"</p>");
        </script>
   </div>
 </section>
@@ -133,57 +133,263 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
 
 <section class="ejercicio">
   <!-- Descripción -->
-  <h2>Ejercicio 1</h2>
+  <h2>Encontrar el numero mayor</h2>
   <p class="descripcion">
-Veamos un ejercicio resuelto para encontrar el mayor número en un arreglo: 
+    Veamos un ejercicio resuelto para encontrar el mayor número en un arreglo: 
   </p>
   <!-- Contenido -->
 
   <div class="contenido">
     <!-- Imagen del código -->
     <div class="codigo-img">
-      <img src="../Imagenes/arreglos5.PNG" alt="Código del ejercicio">
+      <img src="../Imagenes/arreglosejercicio1.PNG" alt="Código del ejercicio">
     </div>
   <!-- Ejecución -->
     <div class="codigo-ejecucion">
       <!-- Aquí pegas tu código en vivo -->
        <h2>Funcionamiento de codigo</h2>
        <script>
+        function encontrarMayor(arr) {
+          return arr.reduce((max, num) => (num > max ? num : max), arr[0]);
+        }
 
+        const numeros2 = [10,5,8,20,15];
+        document.write("<p id='resultado'>"+ encontrarMayor(numeros2) +"</p>"); // Salida: 20
        </script>
+  </div>
+  <div class="codigo-ejecucion">
+    <h2>Probar codigo</h2>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <input type="number" id="num3" placeholder="Número 3">
+    <input type="number" id="num4" placeholder="Número 4">
+    <input type="number" id="num5" placeholder="Número 5">
+    <button onclick="probarCodigo()">buscar mayor</button>
+    <script>
+      function probarCodigo() {
+        const num1 = parseInt(document.getElementById('num1').value);
+        const num2 = parseInt(document.getElementById('num2').value);
+        const num3 = parseInt(document.getElementById('num3').value);
+        const num4 = parseInt(document.getElementById('num4').value);
+        const num5 = parseInt(document.getElementById('num5').value);
+        const numeros = [num1, num2, num3, num4, num5];
+        const mayor = encontrarMayor(numeros);
+        alert("El número mayor es: " + mayor);
+      }
+    </script>
   </div>
 </section>
 
 <!-- Ejercicio 2 -->
 <section class="ejercicio">
-    <h2>Ejercicio 2</h2>
+    <h2>Creacion y acceso propiedades de objetos</h2>
     <p class="descripcion">
-      Veamos un ejercicio resuelto para encontrar el menor número en un arreglo:
+      Los objetos en JavaScript son estructuras que permiten almacenar datos en pares clave-valor. Veamos un ejemplo:
     </p>
     <!-- Contenido -->
 
     <div class="contenido">
       <!-- Imagen del código -->
       <div class="codigo-img">
-        <img src="../Imagenes/arreglos6.PNG" alt="Código del ejercicio">
+        <img src="../Imagenes/arreglosejercicio2.PNG" alt="Código del ejercicio">
       </div>
       <!-- Ejecución -->
       <div class="codigo-ejecucion">
         <!-- Aquí pegas tu código en vivo -->
         <h2>Funcionamiento de codigo</h2>
         <script>
-
+          const persona = {nombre:"Juan", edad: 30,ciudad:"Madrid"};
+          document.write("<p id='resultado'>"+ persona.nombre +"</p>");
+          // Juan
+          document.write("<p id='resultado'>"+ persona["edad"] +"</p>");
+          // 30
         </script>
       </div>
     </div>
 </section>
 
-<!-- Funciones de orden superior  -->
- <section class="ejercicio">
-    <h2>Funciones de orden superior</h2>
-    <div class="instrucciones">
+<!-- iteracion sobre propiedades de objetos -->
+<section class="ejercicio">
+    <h2>Iteración sobre propiedades de objetos</h2>
+    <p class="descripcion">
+      Para recorrer las propiedades de un objeto, podemos usar un bucle for...in:
+    </p>
+    <!-- Contenido -->
 
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/arreglosejercicio3.PNG" alt="Código del ejercicio">
+      </div>
+      <!-- Ejecución -->
+      <div class="codigo-ejecucion">
+        <!-- Aquí pegas tu código en vivo -->
+        <h2>Funcionamiento de codigo</h2>
+        <script>
+          const libro = {titulo:"El principito",autor:"Antoine de Saint-Exupéry",año: 1943};
+          for (let propiedad in libro) {
+            document.write("<p id='resultado'>"+ `${propiedad}: ${libro[propiedad]}` +"</p>");
+          }
+          // Salida:
+          // titulo: El principito
+          // autor: Antoine de Saint-Exupéry
+          // año: 1943
+        </script>
+      </div>
     </div>
- </section>
+</section>
+
+<!-- Contar propiedades de un objeto -->
+<section class="ejercicio">
+    <h2>Contar propiedades de un objeto</h2>
+    <p class="descripcion">
+      Para contar las propiedades de un objeto, podemos usar la función Object.keys():
+    </p>
+    <!-- Contenido -->
+
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/arreglosejercicio4.PNG" alt="Código del ejercicio">
+      </div>
+      <!-- Ejecución -->
+      <div class="codigo-ejecucion">
+        <!-- Aquí pegas tu código en vivo -->
+        <h2>Funcionamiento de codigo</h2>
+        <script>
+          function contarPropiedades(obj){
+          return Object.keys(obj).length;
+          }
+
+          const coche = {marca:"Toyota",modelo:"Corolla",
+          año:2020};
+          document.write("<p id='resultado'>Número de propiedades del objeto coche: </p>");
+          document.write("<p id='resultado'>"+ contarPropiedades(coche) +"</p>");
+          // 3
+        </script>
+      </div>
+    </div>
+</section>
+
+<!-- transformacion de arreglos de objetos -->
+<section class="ejercicio">
+    <h2>Transformación de arreglos de objetos</h2>
+    <p class="descripcion">
+      Para transformar un arreglo de objetos, podemos usar el método map():
+    </p>
+    <!-- Contenido -->
+
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/arreglosejercicio5.PNG" alt="Código del ejercicio">
+      </div>
+      <!-- Ejecución -->
+      <div class="codigo-ejecucion">
+        <!-- Aquí pegas tu código en vivo -->
+        <h2>Funcionamiento de codigo</h2>
+        <script>
+          const usuarios = [{nombre:"Ana",edad:25}, {nombre:"Luis",edad:30 },{nombre:"María",edad:28}];
+          function obtenerNombres(arr) {
+          return arr.map(usuario => usuario.nombre);
+          }
+          document.write("<p id='resultado'>"+ obtenerNombres(usuarios) +"</p>");
+          // ["Ana", "Luis", "María"]
+        </script>
+      </div>
+    </div>
+</section>
+
+<!-- filtrado de arreglos de objetos -->
+<section class="ejercicio">
+    <h2>Filtrado de arreglos de objetos</h2>
+    <p class="descripcion">
+      Para filtrar un arreglo de objetos, podemos usar el método filter():
+    </p>
+    <!-- Contenido -->
+
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/arreglosejercicio6.PNG" alt="Código del ejercicio">
+      </div>
+      <!-- Ejecución -->
+      <div class="codigo-ejecucion">
+        <!-- Aquí pegas tu código en vivo -->
+        <h2>Funcionamiento de codigo</h2>
+        <script>
+            const usuarios2 = [{nombre:"Ana",edad:25}, {nombre:"Luis",edad:30 },{nombre:"María",edad:28}];
+
+            function filtrarUsuarios(arr) {
+            return arr.filter(usuario => usuario.edad > 24);
+            }
+            document.write("<p id='resultado'>"+ JSON.stringify(filtrarUsuarios(usuarios2))  +"</p>");
+        </script>
+      </div>
+    </div>
+</section>
+
+<!-- Agrupacion por propiedad -->
+<section class="ejercicio">
+    <h2>Agrupación por propiedad</h2>
+    <p class="descripcion">
+      Para agrupar un arreglo de objetos por una propiedad, podemos usar el método reduce():
+    </p>
+    <pre>
+      <code>
+            function agruparPorCategoria(arr) {
+              return arr.reduce((grupo, producto) => {
+              const categoria = producto.categoria;
+              if (!grupo[categoria]) {
+              grupo[categoria] = [];
+              }
+              grupo[categoria].push(producto);
+              return grupo;
+              }, {});
+              }
+      </code>
+    </pre>
+    <!-- Contenido -->
+
+    <div class="contenido">
+      <!-- Imagen del código -->
+      <div class="codigo-img">
+        <img src="../Imagenes/arreglosejercicio7.PNG" alt="Código del ejercicio">
+      </div>
+      <!-- Ejecución -->
+      <div class="codigo-ejecucion">
+        <!-- Aquí pegas tu código en vivo -->
+        <h2>Funcionamiento de codigo</h2>
+        <script>
+            const productos = [{ nombre: "camiseta", categoria: "ropa" },{ nombre: "pantalón", categoria: "ropa" },{ nombre: "zapatos", categoria:
+            "calzado" },{nombre: "sandalias", categoria: "calzado" }];
+            document.write("<p id='resultado'>"+ JSON.stringify(agruparPorCategoria(productos)) +"</p>");
+            // {
+            // ropa: [{ nombre: "camiseta", categoria: "ropa" }, { nombre: "pantalón", categoria: "ropa" }],
+            // calzado: [{ nombre: "zapatos", categoria: "calzado" }, { nombre: "sandalias", categoria: "calzado" }]
+            // }
+
+            function agruparPorCategoria(productos) {
+              return productos.reduce((acc, producto) => {
+                const { categoria } = producto;
+                if (!acc[categoria]) {
+                  acc[categoria] = [];
+                }
+                acc[categoria].push(producto);
+                return acc;
+              }, {});
+            }
+        </script>
+      </div>
+    </div>
+</section>
 </body>
+<script>
+            for (let img of document.getElementsByClassName('codigo-img')) {
+            img.addEventListener('click', (e) => {
+                console.log("Clic en:", e.target);
+                e.target.requestFullscreen();
+            });
+          }
+</script>
 </html>

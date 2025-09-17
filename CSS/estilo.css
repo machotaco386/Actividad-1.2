@@ -139,14 +139,7 @@ button:hover {
 }
 
 /* ===== Resultado ===== */
-#resultado,
-#resultado2,
-#resultado3,
-#resultado4,
-#resultado5,
-#resultado6,
-#resultado7,
-#resultado8 {
+[id^="resultado"] {
   margin-top: 15px;
   font-weight: bold;
   color: #007acc;
@@ -202,39 +195,34 @@ button:hover {
 }
 
 /* Ajuste responsivo */
-@media (max-width: 1024px) {
-  body {
-    padding: 0 50px;
-  }
-}
-
 @media (max-width: 768px) {
   body {
     padding: 0 20px;
   }
-}
 
-@media (max-width: 768px) {
   .contenido {
     flex-direction: column;
   }
-}
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8rem;
+  .codigo-img img {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 768px) {
-  section.ejercicio h2 {
-    font-size: 1.3rem;
-  }
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
 }
 
-@media (max-width: 480px) {
-  button {
-    width: 100%;
-    text-align: center;
-  }
+[id^="posts"] {
+  max-height: 300px;  /* Altura máxima del contenedor */
+  overflow-y: auto;   /* Scroll vertical si se necesita */
+  border: 1px solid #ccc; /* Un borde para que se vea mejor */
+  padding: 10px;      /* Espacio interno para que no se pegue el texto */
+  list-style-position: inside; /* Para que los puntos de la lista queden adentro */
 }

@@ -347,6 +347,86 @@ llamarApiConAsyncAwait();
     </div>
 </section>
 
+
+<!-- Asincronizacion 3 -->
+
+<section class="ejercicio">
+    <h2>Async - Await Ejercicio 'Users expandido'</h2>
+    <div class="instrucciones">
+        <p class="descripcion">El objetivo de este ejercicio es crear una página web que obtenga una lista de usuarios desde una API y muestre sus nombres en una lista. Los estudiantes deberán:</p> 
+            <ol>
+                <li>Crear un archivo HTML con un contenedor "ul" para mostrar los usuarios.</li>
+                <li>Escribir una función en JavaScript que realice una solicitud a la API https://jsonplaceholder.typicode.com/users.</li>
+            </ol>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/async3.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento de codigo</h2>
+            <h3>Usuarios</h3>
+            <ul id="posts3">
+
+            </ul>
+            <script src="../JS/app2.js"></script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Ejercicio FInal</h2>
+    <div class="instrucciones">
+        <p class="descripcion">
+            Se obtiene un listado de productos de una API pública. El contenedor tiene una altura fija y una barra de desplazamiento para evitar que la página se alargue demasiado.
+        </p>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/promesasfinal1.PNG" alt="">
+            <img src="../Imagenes/promesasfinal2.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Catálogo de Productos</h2>
+            <div id="productos-container" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; height: 500px; overflow-y: auto; border: 1px solid #eee; padding: 10px;">
+                </div>
+
+            <script>
+                // La función que crea las tarjetas no necesita ningún cambio
+                const crearTarjetaProductoHTML = (producto) => {
+                    const tituloCorto = producto.title.length > 50 ? producto.title.substring(0, 50) + '...' : producto.title;
+                    return `
+                        <div style="border: 1px solid #ccc; border-radius: 8px; width: 200px; padding: 10px; text-align: center; box-shadow: 2px 2px 5px #eee;">
+                            <img src="${producto.image}" alt="${tituloCorto}" style="width: 100px; height: 100px; object-fit: contain;">
+                            <h4 style="font-size: 14px; height: 50px;">${tituloCorto}</h4>
+                            <p style="font-size: 16px; font-weight: bold; color: #333;">$${producto.price.toFixed(2)}</p>
+                        </div>
+                    `;
+                };
+
+                // El resto del script tampoco necesita cambios
+                const cargarProductos = async () => {
+                    const contenedor = document.getElementById('productos-container');
+                    contenedor.innerHTML = '<p>Cargando productos...</p>';
+                    try {
+                        const response = await fetch('https://fakestoreapi.com/products');
+                        if (!response.ok) throw new Error('No se pudo obtener la información de los productos.');
+                        const productos = await response.json();
+                        const tarjetasHtml = productos.map(crearTarjetaProductoHTML);
+                        contenedor.innerHTML = tarjetasHtml.join('');
+                    } catch (error) {
+                        contenedor.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                    }
+                };
+
+                cargarProductos();
+            </script>
+        </div>
+    </div>
+</section>
+
+
 </body>
 
 <script>

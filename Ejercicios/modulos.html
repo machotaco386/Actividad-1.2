@@ -76,6 +76,14 @@
     </div>
 </section>
 </body>
+<script>
+            for (let img of document.getElementsByClassName('codigo-img')) {
+            img.addEventListener('click', (e) => {
+                console.log("Clic en:", e.target);
+                e.target.requestFullscreen();
+            });
+          }
+</script>
 </html>
 
     

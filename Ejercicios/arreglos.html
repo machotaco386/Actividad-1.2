@@ -332,6 +332,7 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
 <!-- Agrupacion por propiedad -->
 <section class="ejercicio">
     <h2>Agrupación por propiedad</h2>
+    <div class="instrucciones">
     <p class="descripcion">
       Para agrupar un arreglo de objetos por una propiedad, podemos usar el método reduce():
     </p>
@@ -349,6 +350,7 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
               }
       </code>
     </pre>
+    </div>
     <!-- Contenido -->
 
     <div class="contenido">
@@ -383,6 +385,99 @@ El método filter <b>crea un nuevo arreglo</b> con todos los elementos que cumpl
       </div>
     </div>
 </section>
+
+<section class="ejercicio">
+    <h2>Ejercicio Combinado: map, filter y reduce</h2>
+    <p class="descripcion">
+        Calcula el costo total de productos de una categoría específica que superen un cierto precio. Para ello, se encadenan los tres métodos:
+        <ol>
+            <li><b>filter:</b> Para seleccionar solo los productos de "Electrónica" que cuestan más de $200.</li>
+            <li><b>map:</b> Para extraer únicamente el precio de los productos filtrados.</li>
+            <li><b>reduce:</b> Para sumar todos los precios extraídos y obtener el total.</li>
+        </ol>
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+          <img src="../Imagenes/arreglosfinal.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-combinado"></div>
+
+            <script>
+                const productos1 = [
+                    { nombre: 'Monitor', categoria: 'Electrónica', precio: 350 },
+                    { nombre: 'Teclado', categoria: 'Electrónica', precio: 80 },
+                    { nombre: 'Camisa', categoria: 'Ropa', precio: 40 },
+                    { nombre: 'Audífonos', categoria: 'Electrónica', precio: 250 },
+                    { nombre: 'Pantalón', categoria: 'Ropa', precio: 90 }
+                ];
+
+                // Encadenamos los tres métodos
+                const costoTotal = productos1
+                    .filter(producto => producto.categoria === 'Electrónica' && producto.precio > 200)
+                    .map(producto => producto.precio)
+                    .reduce((total, precio) => total + precio, 0);
+
+                // Mostramos el resultado en el div
+                const contenedor = document.getElementById('resultado-combinado');
+                contenedor.innerHTML = `<p>El costo total de la electrónica elegida es: <strong>$${costoTotal}</strong></p>`; // Salida: $600
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Ejercicio: Manipulación de Objetos</h2>
+    <p class="descripcion">
+        Se crea una función para actualizar las propiedades de un objeto. Esta función utiliza el <strong>spread syntax (...)</strong> para fusionar el objeto original con las actualizaciones, creando un objeto nuevo sin alterar el original.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+          <img src="../Imagenes/arreglosfinal2.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-objetos"></div>
+            <script>
+                // Función que actualiza un objeto de forma inmutable
+                function actualizarConfiguracion(configOriginal, actualizaciones) {
+                    // Usamos el spread syntax para crear un nuevo objeto
+                    // Se copian las propiedades del original y luego se sobrescriben con las actualizaciones
+                    return { ...configOriginal, ...actualizaciones };
+                }
+
+                const configuracionInicial = {
+                    tema: 'oscuro',
+                    idioma: 'es',
+                    notificaciones: true
+                };
+
+                const cambios = {
+                    tema: 'claro',
+                    notificaciones: false
+                };
+
+                // Llamamos a la función para obtener la nueva configuración
+                const configuracionFinal = actualizarConfiguracion(configuracionInicial, cambios);
+
+                // Mostramos ambos objetos para verificar que el original no cambió
+                const contenedorObjetos = document.getElementById('resultado-objetos');
+                
+                // JSON.stringify(obj, null, 2) formatea el objeto para que se vea bien
+                contenedorObjetos.innerHTML = `
+                    <h3>Configuración Original (no fue modificada):</h3>
+                    <pre><code>${JSON.stringify(configuracionInicial, null, 2)}</code></pre>
+                    <h3>Configuración Nueva (con los cambios aplicados):</h3>
+                    <pre><code>${JSON.stringify(configuracionFinal, null, 2)}</code></pre>
+                `;
+            </script>
+        </div>
+    </div>
+</section>
+
+
 </body>
 <script>
             for (let img of document.getElementsByClassName('codigo-img')) {

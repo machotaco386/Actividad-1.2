@@ -9,5 +9,261 @@
 <body>
     <a href="../index.html" class="btn-regresar">⬅ Regresar al inicio</a>
     <h1>Programacion orientada a objetos</h1>
+
+    <section class="ejercicio"> <!-- POO 1 -->
+    <h2>Clases y objetos</h2>
+    <div class="instrucciones">
+        <ul>
+            <li><b>Clases: </b>Una clase es una plantilla para crear objetos. Define un tipo de objeto según sus propiedades (atributos) y métodos (funciones)</li>
+            <li><b>Objetos: </b>Una instancia de una clase. Es una entidad que tiene un estado y comportamiento definidos por sus propiedades y métodos.</li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/POO1.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Clases y Objetos</h2>
+            <script>
+                // Definición de una clase
+                class Animal {
+                    constructor(nombre, sonido) {
+                        this.nombre = nombre;
+                        this.sonido = sonido;
+                    }
+
+                    hacerSonido() {
+                        return `${this.nombre} hace ${this.sonido}`;
+                    }
+                }
+
+                // Creación de un objeto (instancia de la clase Animal)
+                const perro = new Animal('Perro', 'guau');
+                document.writeln("Salida:"+perro.hacerSonido());
+            </script>
+        </div>
+    </div>
+</section>
+
+    <section class="ejercicio"> <!-- POO 2 -->
+    <h2>Herencias</h2>
+    <div class="instrucciones">
+        <ul>
+            <li><b>Herencia: </b>Es un mecanismo que permite crear una nueva clase basada en una clase existente. La clase nueva hereda las propiedades y métodos de la clase base.</li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/POO2.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+        <h2>Ejemplo de herencia</h2>
+        <p id="resultado"></p>
+        <p id="resultado1"></p>
+        <script>
+            // Clase base
+            class Animal1 {
+                constructor(nombre, sonido) {
+                    this.nombre = nombre;
+                    this.sonido = sonido;
+                }
+
+                hacerSonido() {
+                    return `${this.nombre} hace ${this.sonido}`;
+                }
+            }
+
+            // Clase derivada (subclase)
+            class Perro extends Animal1 {
+                constructor(nombre, raza) {
+                    super(nombre, 'guau'); // Llama al constructor de la clase base
+                    this.raza = raza;
+                }
+
+                mostrarRaza() {
+                    return `${this.nombre} es un ${this.raza}`;
+                }
+            }
+
+            // Creación de un objeto (instancia de la clase Perro)
+            const miPerro = new Perro('Max', 'Labrador');
+            document.getElementById('resultado').innerHTML = "<br>"+miPerro.hacerSonido(); // Max hace guau
+            document.getElementById('resultado1').innerHTML = "<br>"+miPerro.mostrarRaza(); // Max es un Labrador
+        </script>
+        </div>
+    </div>
+</section>
+
+  <section class="ejercicio"> <!-- POO 3 -->
+    <h2>Polimorfismo</h2>
+    <div class="instrucciones">
+        <ul>
+            <li><b>Polimorfismo: </b>Permite que diferentes clases se traten como si fueran de una clase común. Es la capacidad de un método de hacer cosas diferentes en función del objeto que lo llama.</li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/POO2.PNG" alt="Código del ejercicio">
+            <img src="../Imagenes/POO3.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Polimorfismo</h2>
+            <p id="resultado4"></p>
+            <p id="resultado5"></p>
+            <script>
+                class Animal3 {
+                    constructor(nombre, sonido) {
+                        this.nombre = nombre;
+                        this.sonido = sonido;
+                    }
+
+                    hacerSonido() {
+                        return `${this.nombre} hace ${this.sonido}`;
+                    }
+                }
+
+                class Perro2 extends Animal3 {
+                    constructor(nombre, raza) {
+                        super(nombre, 'guau');
+                        this.raza = raza;
+                    }
+
+                    hacerSonido() {
+                        return `${this.nombre} ladra: ${this.sonido}`;
+                    }
+                }
+
+                class Gato extends Animal3 {
+                    constructor(nombre) {
+                        super(nombre, 'miau');
+                    }
+
+                    hacerSonido() {
+                        return `${this.nombre} maúlla: ${this.sonido}`;
+                    }
+                }
+
+                const animales = [new Perro2('Max', 'Labrador'), new Gato('Luna')];
+                // Recolectar los sonidos en un solo string
+                let salida = '';
+                animales.forEach(animal => {
+                    salida += animal.hacerSonido() + '<br>'; // Agrega un salto de línea HTML
+                });
+
+                // Mostrar el resultado en el documento
+            document.getElementById('resultado4').innerHTML = salida;
+
+                // Max ladra: guau
+                // Luna maúlla: miau
+            </script>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ejercicio"> <h2>Ejercicio de Herencia con Vehículos</h2>
+    <div class="instrucciones">
+        <ul>
+            <li><b>Clase Base:</b> Vehiculo (marca, modelo)</li>
+            <li><b>Subclases:</b> Coche (puertas), Moto (cilindrada), Camion (carga)</li>
+            <li>Se crean instancias de cada clase para demostrar herencia y polimorfismo.</li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/POOcarro1.PNG" alt="">
+            <img src="../Imagenes/POOcarro2.PNG" alt="">
+            <img src="../Imagenes/POOcarro3.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Resultados de Vehículos</h2>
+            <div id="resultado-vehiculos"></div>
+
+            <script>
+                // 1. Crear una clase base Vehiculo
+                class Vehiculo {
+                    constructor(marca, modelo) {
+                        this.marca = marca;
+                        this.modelo = modelo;
+                    }
+
+                    mostrarInfo() {
+                        return `Vehículo: <strong>${this.marca} ${this.modelo}</strong>`;
+                    }
+
+                    // 5. Otro método agregado
+                    encender() {
+                        return `${this.marca} ${this.modelo} ha encendido el motor.`;
+                    }
+                }
+
+                // 2. Crear una subclase Coche
+                class Coche extends Vehiculo {
+                    constructor(marca, modelo, puertas) {
+                        super(marca, modelo); // Llama al constructor de Vehiculo
+                        this.puertas = puertas;
+                    }
+
+                    // Método redefinido (Polimorfismo)
+                    mostrarInfo() {
+                        return `Coche: <strong>${this.marca} ${this.modelo}</strong> con ${this.puertas} puertas.`;
+                    }
+                }
+
+                // 4. Agregar más Subclases (Moto)
+                class Moto extends Vehiculo {
+                    constructor(marca, modelo, cilindrada) {
+                        super(marca, modelo);
+                        this.cilindrada = cilindrada;
+                    }
+
+                    mostrarInfo() {
+                        return `Moto: <strong>${this.marca} ${this.modelo}</strong> de ${this.cilindrada}cc.`;
+                    }
+                }
+                
+                // 4. Agregar más Subclases (Camion)
+                class Camion extends Vehiculo {
+                    constructor(marca, modelo, capacidadCarga) {
+                        super(marca, modelo);
+                        this.capacidadCarga = capacidadCarga;
+                    }
+                    
+                    mostrarInfo(){
+                        return `Camión: <strong>${this.marca} ${this.modelo}</strong> con capacidad de ${this.capacidadCarga}kg.`;
+                    }
+                }
+
+                // 3. Crear instancias y utilizar sus métodos
+                const miCoche = new Coche('Toyota', 'Corolla', 4);
+                const miMoto = new Moto('Honda', 'CBR', 500);
+                const miCamion = new Camion('Volvo', 'FH', 20000);
+
+                // Acumular todos los resultados en una variable
+                let salidaVehiculos = '';
+                salidaVehiculos += miCoche.mostrarInfo() + '<br>';
+                salidaVehiculos += miCoche.encender() + '<br><br>'; // Salto de línea doble para separar
+                
+                salidaVehiculos += miMoto.mostrarInfo() + '<br>';
+                salidaVehiculos += miMoto.encender() + '<br><br>';
+
+                salidaVehiculos += miCamion.mostrarInfo() + '<br>';
+                salidaVehiculos += miCamion.encender() + '<br>';
+
+                // Mostrar todo en el div correspondiente
+                document.getElementById('resultado-vehiculos').innerHTML = salidaVehiculos;
+            </script>
+        </div>
+    </div>
+</section>
 </body>
+<script>
+            for (let img of document.getElementsByClassName('codigo-img')) {
+            img.addEventListener('click', (e) => {
+                console.log("Clic en:", e.target);
+                e.target.requestFullscreen();
+            });
+          }
+</script>
 </html>

@@ -337,6 +337,440 @@
     </div>
   </div>
 </section>
+
+<section class="ejercicio">
+    <h2>Función que aplica una operación a un Array</h2>
+    <p class="descripcion">
+        Este ejercicio muestra cómo crear una función que aplica una operación a cada elemento de un array utilizando el método <strong>map</strong>. Se define una función genérica y luego se le pasa una operación específica (como duplicar) para ser ejecutada.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones6.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-map-funcion"></div>
+
+            <script>
+                // 1. Definición de la función genérica
+                function aplicarOperacionAArray(arr, operacion) {
+                    return arr.map(operacion);
+                }
+
+                // 2. Función de ejemplo que se pasará como argumento
+                const duplicar = (x) => x * 2;
+
+                // 3. Pruebas
+                const numeros = [1, 2, 3, 4];
+                const resultado = aplicarOperacionAArray(numeros, duplicar);
+
+                // Mostramos el resultado en el div
+                const contenedor = document.getElementById('resultado-map-funcion');
+                
+                // Usamos JSON.stringify para mostrar el array de forma legible
+                contenedor.innerHTML = `<p>El resultado es: <strong>[${resultado.join(', ')}]</strong></p>`;
+                // Salida: El resultado es: [2, 4, 6, 8]
+            </script>
+        </div>
+    </div>
+</section>
+
+<section class="ejercicio">
+    <h2>Función que aplica una operación a un Array</h2>
+    <p class="descripcion">
+        Se agreagó una segunda operación, "elevar al cuadrado", para demostrar cómo la función genérica <code>aplicarOperacionAArray</code> puede reutilizarse con diferentes lógicas.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones7.PNG" alt="Código del ejercicio">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-map-funcion2"></div>
+
+            <script>
+                // 1. Definición de la función genérica (sin cambios)
+                function aplicarOperacionAArray2(arr, operacion2) {
+                    return arr.map(operacion2);
+                }
+
+                // 2. Primera operación: duplicar
+                const duplicar2 = (x) => x * 2;
+
+                // 3. Nueva operación: elevar al cuadrado
+                const aCuadrado = (x) => x * x;
+
+                // 4. Pruebas
+                const numeros2 = [1, 2, 3, 4];
+                const resultadoDuplicado2 = aplicarOperacionAArray2(numeros2, duplicar2);
+                
+                // Se manda a llamar la nueva operación
+                const resultadoCuadrado = aplicarOperacionAArray2(numeros2, aCuadrado);
+
+                // Mostramos ambos resultados en el mismo div
+                const contenedor2 = document.getElementById('resultado-map-funcion2');
+                
+                contenedor2.innerHTML = `
+                    <p>Resultado de <strong>duplicar</strong>: [${resultadoDuplicado2.join(', ')}]</p>
+                    <p>Resultado de <strong>elevar al cuadrado</strong>: [${resultadoCuadrado.join(', ')}]</p>
+                `;
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Ejemplo de Closure: Contador Privado</h2>
+    <p class="descripcion">
+        La función <code>crearContador</code> define una variable <code>contador</code> que no es accesible desde el exterior. Sin embargo, la función interna que se devuelve puede acceder y modificar esta variable, creando un estado privado que persiste entre llamadas.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones8.PNG" alt="Código del ejercicio de closure">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-closure"></div>
+
+            <script>
+                // La función "fábrica" que crea nuestro contador
+                function crearContador() {
+                    let contador = 0; // Esta variable es privada
+
+                    // Se retorna una nueva función que "cierra" o "atrapa" la variable 'contador'
+                    return function() {
+                        contador += 1;
+                        return contador;
+                    };
+                }
+
+                // Creamos una instancia del contador. 
+                // miContador ahora es la función interna que fue retornada.
+                const miContador = crearContador();
+
+                // Obtenemos el contenedor para mostrar el resultado
+                const contenedor3 = document.getElementById('resultado-closure');
+
+                // Llamamos a la función varias veces y mostramos cómo el estado se mantiene
+                let salida = '';
+                salida += `<p>Primera llamada: <strong>${miContador()}</strong></p>`; // Muestra 1
+                salida += `<p>Segunda llamada: <strong>${miContador()}</strong></p>`; // Muestra 2
+                salida += `<p>Tercera llamada: <strong>${miContador()}</strong></p>`; // Muestra 3
+
+                contenedor3.innerHTML = salida;
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Ejemplo de Closures: Fábrica de Saludos</h2>
+    <p class="descripcion">
+        Este ejercicio demuestra cómo una función puede "fabricar" y devolver otras funciones. La función interna recuerda la variable <code>saludo</code> de su función contenedora, un concepto clave de los closures en JavaScript.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones9.PNG" alt="Código del ejercicio de closures">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-saludos"></div>
+
+            <script>
+                // 1. Definición de la función "fábrica"
+                function crearSaludo(saludo) {
+                    // Devuelve una nueva función que recuerda el 'saludo'
+                    return function(nombre) {
+                        return `${saludo}, ${nombre}!`;
+                    };
+                }
+
+                // 2. Creación de funciones de saludo especializadas
+                const saludarEnEspanol = crearSaludo('Hola');
+                const saludarEnIngles = crearSaludo('Hello');
+                // 4. Se agrega otra función para un saludo diferente (en francés)
+                const saludarEnFrances = crearSaludo('Bonjour');
+
+                // 3. Pruebas
+                const contenedor4 = document.getElementById('resultado-saludos');
+                let salida2 = '';
+
+                // Usamos las nuevas funciones
+                salida2+= `<p>${saludarEnEspanol('Juan')}</p>`;
+                salida2 += `<p>${saludarEnIngles('John')}</p>`;
+                salida2 += `<p>${saludarEnFrances('Jean')}</p>`;
+                
+                contenedor4.innerHTML = salida2;
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Funciones que Crean Otras Funciones (Closures)</h2>
+    <p class="descripcion">
+        Este ejercicio demuestra cómo la función <code>crearMultiplicador</code> actúa como una "fábrica" que produce funciones especializadas. Cada nueva función (<code>duplicar</code>, <code>triplicar</code>) recuerda el <code>factor</code> con el que fue creada.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones10.PNG" alt="Código del ejercicio de multiplicador">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-multiplicador"></div>
+
+            <script>
+                // La función "fábrica" que crea multiplicadores
+                function crearMultiplicador(factor) {
+                    // Retorna una nueva función que recuerda el 'factor'
+                    return function(numero) {
+                        return numero * factor;
+                    };
+                }
+
+                // Creamos funciones especializadas usando la fábrica
+                const duplicar3 = crearMultiplicador(2);
+                const triplicar = crearMultiplicador(3);
+
+                // Probamos las nuevas funciones
+                const contenedor5 = document.getElementById('resultado-multiplicador');
+                
+                // Usamos las funciones creadas y mostramos su salida
+                contenedor5.innerHTML = `
+                    <p>Llamando a duplicar(5): <strong>${duplicar(5)}</strong></p>
+                    <p>Llamando a triplicar(5): <strong>${triplicar(5)}</strong></p>
+                `;
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Patrón Revelador (Revealing Module Pattern)</h2>
+    <p class="descripcion">
+        El patrón revelador utiliza un <strong>closure</strong> para encapsular la lógica y exponer solo ciertas partes de un objeto o módulo. Esto permite ocultar la implementación interna y proteger el estado de las variables privadas.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+            <img src="../Imagenes/funciones11.PNG" alt="Código del patrón revelador">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <div id="resultado-patron-revelador"></div>
+
+            <script>
+                // Se usa un nombre de variable único para el módulo
+                const miModuloContador = (function () {
+                    // --- PARTE PRIVADA ---
+                    // Esta variable no se puede acceder desde fuera del módulo.
+                    let contadorPrivado = 0;
+
+                    function incrementarContador() {
+                        contadorPrivado++;
+                    }
+
+                    function obtenerValorContador() {
+                        return contadorPrivado;
+                    }
+
+                    // --- PARTE PÚBLICA (LO QUE SE REVELA) ---
+                    // Devolvemos un objeto con las funciones que queremos que sean públicas.
+                    return {
+                        incrementar: incrementarContador,
+                        obtener: obtenerValorContador
+                    };
+                })(); // Los paréntesis finales () ejecutan la función inmediatamente.
+
+                // --- USO DEL MÓDULO ---
+                
+                // Usamos un nombre de variable único para el contenedor
+                const contenedorModulo = document.getElementById('resultado-patron-revelador');
+                let salidaModulo = '';
+
+                // 1. Obtenemos el valor inicial (debería ser 0)
+                salidaModulo += `<p>Valor inicial del contador: <strong>${miModuloContador.obtener()}</strong></p>`;
+
+                // 2. Incrementamos el valor dos veces
+                miModuloContador.incrementar();
+                miModuloContador.incrementar();
+                
+                // 3. Obtenemos el nuevo valor (debería ser 2)
+                salidaModulo += `<p>Valor después de llamar a incrementar() dos veces: <strong>${miModuloContador.obtener()}</strong></p>`;
+
+                // Intento de acceso a la variable privada (esto daría error, demostrando que está protegida)
+                salidaModulo += `<p>Intento de acceder a 'contadorPrivado' directamente: <strong>${typeof miModuloContador.contadorPrivado}</strong></p>`; // Salida: undefined
+
+                contenedorModulo.innerHTML = salidaModulo;
+            </script>
+        </div>
+    </div>
+</section>
+
+
+<section class="ejercicio">
+    <h2>Juego: Adivina el Número</h2>
+    <p class="descripcion">
+        Un juego completo que utiliza closures para generar un número secreto y gestionar los intentos del jugador. Haz clic en el botón para comenzar.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+          <img src="../Imagenes/juego.PNG" alt="">
+          <img src="../Imagenes/juego2.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>¡A Jugar!</h2>
+            <button id="iniciar-juego-btn" style="padding: 10px 15px; font-size: 16px;">Iniciar Juego</button>
+            <p id="estado-juego" style="margin-top: 15px; font-style: italic;">Presiona el botón para empezar una nueva partida.</p>
+
+            <script>
+                // Función 1: Crea una función que genera un número aleatorio en un rango.
+                function crearGeneradorNumeroAleatorio(min, max) {
+                    // La función devuelta "recuerda" los valores min y max.
+                    return function() {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    };
+                }
+
+                // Función 2: Crea la lógica del juego.
+                function crearJuegoAdivinarNumero(generadorNumero) {
+                    // Estas variables son PRIVADAS gracias al closure.
+                    const numeroAleatorio = generadorNumero();
+                    let intentos = 0;
+                    
+                    console.log(`(Pista para depuración: el número secreto es ${numeroAleatorio})`);
+
+                    // La función devuelta es la que el jugador usará para adivinar.
+                    return function(adivina) {
+                        intentos++;
+                        if (adivina < numeroAleatorio) {
+                            return `El número es mayor. Intentos: ${intentos}`;
+                        } else if (adivina > numeroAleatorio) {
+                            return `El número es menor. Intentos: ${intentos}`;
+                        } else {
+                            return `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
+                        }
+                    };
+                }
+                
+                // Función 3: Controla el flujo principal del juego.
+                function iniciarJuego() {
+                    const estadoJuego = document.getElementById('estado-juego');
+                    estadoJuego.textContent = "Juego en curso... Revisa las ventanas emergentes.";
+
+                    const rangoMin = parseInt(prompt("Ingresa el valor mínimo del rango:"));
+                    const rangoMax = parseInt(prompt("Ingresa el valor máximo del rango:"));
+
+                    // Validamos que los rangos sean números válidos
+                    if (isNaN(rangoMin) || isNaN(rangoMax) || rangoMin >= rangoMax) {
+                        alert("Por favor, ingresa un rango válido.");
+                        estadoJuego.textContent = "Error en el rango. Vuelve a iniciar el juego.";
+                        return;
+                    }
+
+                    const generadorNumero = crearGeneradorNumeroAleatorio(rangoMin, rangoMax);
+                    let juego = crearJuegoAdivinarNumero(generadorNumero);
+                    let resultado;
+
+                    do {
+                        const adivina = parseInt(prompt(`Adivina el número entre ${rangoMin} y ${rangoMax}:`));
+                        
+                        if (isNaN(adivina)) {
+                            alert("Por favor, ingresa un número.");
+                            continue; // Salta esta iteración y pide el número de nuevo
+                        }
+
+                        resultado = juego(adivina);
+                        alert(resultado);
+
+                    } while (!resultado.includes("¡Felicidades!"));
+                    
+                    estadoJuego.textContent = "¡Juego terminado! Presiona el botón para jugar de nuevo.";
+
+                    if (confirm("¿Quieres jugar de nuevo?")) {
+                        iniciarJuego();
+                    }
+                }
+
+                // En lugar de iniciar el juego directamente, lo asociamos al clic del botón.
+                document.getElementById('iniciar-juego-btn').addEventListener('click', iniciarJuego);
+            </script>
+        </div>
+    </div>
+</section>
+
+<section class="ejercicio">
+    <h2>Ejercicio Final: Memoización con Closures y Funciones de Orden Superior</h2>
+    <p class="descripcion">
+        La <strong>memoización</strong> es una técnica de optimización que guarda los resultados de funciones costosas y los devuelve desde un caché cuando se repiten las mismas entradas. Este ejemplo crea una función <code>memoizar</code> que envuelve a otra función (en este caso, un cálculo de factorial) y utiliza un <strong>closure</strong> para mantener el caché privado.
+    </p>
+    <div class="contenido">
+        <div class="codigo-img">
+          <img src="..//Imagenes/funcionesfinal1.PNG" alt="">
+          <img src="../Imagenes/funcionesfinal2.PNG" alt="">
+        </div>
+        <div class="codigo-ejecucion">
+            <h2>Funcionamiento del código</h2>
+            <p><em>Revisa la consola (F12) para ver cuándo se realiza un cálculo y cuándo se devuelve un resultado desde el caché.</em></p>
+            <div id="resultado-memoizacion"></div>
+
+            <script>
+                // La función de orden superior. Acepta una función 'fn' y devuelve una nueva versión con memoria.
+                function memoizar(fn) {
+                    // 1. El caché se crea aquí y es PRIVADO gracias al closure.
+                    const cache = {};
+
+                    // 2. Se retorna una nueva función que envuelve a la original.
+                    return function(arg) {
+                        // 3. Revisa si el resultado ya está en el caché.
+                        if (cache[arg]) {
+                            console.log(`Devolviendo resultado para '${arg}' desde el caché.`);
+                            return cache[arg];
+                        } else {
+                            // 4. Si no está, ejecuta la función original, guarda el resultado y lo devuelve.
+                            console.log(`Calculando resultado para '${arg}' por primera vez.`);
+                            const resultado = fn(arg);
+                            cache[arg] = resultado;
+                            return resultado;
+                        }
+                    };
+                }
+
+                // Una función de ejemplo que podría ser "lenta" o "costosa".
+                const factorialLento = (n) => {
+                    if (n === 0 || n === 1) return 1;
+                    return n * factorialLento(n - 1);
+                };
+
+                // Creamos una nueva versión de nuestra función factorial que tiene "memoria".
+                const factorialConMemoria = memoizar(factorialLento);
+
+                // --- PRUEBAS ---
+                const contenedorMemo = document.getElementById('resultado-memoizacion');
+                let salidaMemo = '';
+
+                salidaMemo += `<p>Llamando a factorialConMemoria(5)...</p>`;
+                const res1 = factorialConMemoria(5); // Se calcula por primera vez.
+                salidaMemo += `<p>Resultado: ${res1}</p>`;
+
+                salidaMemo += `<p>Llamando a factorialConMemoria(5) de nuevo...</p>`;
+                const res2 = factorialConMemoria(5); // Se devuelve desde el caché al instante.
+                salidaMemo += `<p>Resultado: ${res2}</p>`;
+                
+                salidaMemo += `<p>Llamando a factorialConMemoria(6)...</p>`;
+                const res3 = factorialConMemoria(6); // Se calcula por primera vez.
+                salidaMemo += `<p>Resultado: ${res3}</p>`;
+                
+                contenedorMemo.innerHTML = salidaMemo;
+            </script>
+        </div>
+    </div>
+</section>
+
+
 </body>
 <script>
             for (let img of document.getElementsByClassName('codigo-img')) {

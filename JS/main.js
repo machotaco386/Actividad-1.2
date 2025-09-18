@@ -1,7 +1,7 @@
-import { saludo } from "../JS/saludo";
-import { despedida } from "../JS/despedida";
-import { mensaje } from "../JS/mensaje";
+import { saludo } from "../JS/saludo.js";
+import { despedida } from "../JS/despedida.js";
+import mensaje from "../JS/mensaje.js";             
 
 saludo();
 despedida();
-mensaje();
+console.log(mensaje);

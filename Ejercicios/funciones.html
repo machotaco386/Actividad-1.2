@@ -81,6 +81,13 @@
        <button id="accion3">Realizar Division</button>
        <p id="resultado3"></p>
        <script>
+        function dividir(a,b) {
+          if (b === 0) {
+            return 'error dividir entre 0'
+          }
+          return a/b;
+        }
+
         document.getElementById('accion3').addEventListener('click', () => {
           let num1 = parseFloat(prompt("Ingresa el primer número:"));
           let num2 = parseFloat(prompt("Ingresa el segundo número:"));
@@ -95,6 +102,13 @@
        <button id="accion4">Realizar Division</button>
        <p id="resultado4"></p>
        <script>
+        const dividirFlecha = (a,b) => {
+          if (b === 0) {
+            return 'error dividir entre 0'
+          }
+          return a/b;
+        }
+
         document.getElementById('accion4').addEventListener('click', () => {
           let num1 = parseFloat(prompt("Ingresa el primer número:"));
           let num2 = parseFloat(prompt("Ingresa el segundo número:"));
@@ -279,13 +293,13 @@
 <section class="ejercicio">
   <!-- Descripción -->
   <h2>Ejercicio 2</h2>
-  <p class="descripcion">Este ejercicio se centra en la creación de funciones para encontrar el mayor de dos números, utilizando tanto la sintaxis de función tradicional como la de función flecha, para ello puedes utilizar la consola o un documento.</p>
+  <p class="descripcion">Este ejercicio se centra en ingresar la posicion de un numero en la serie fibonacci y esta te devuelva el valor del numero</p>
   <!-- Contenido -->
 
   <div class="contenido">
     <!-- Imagen del código -->
     <div class="codigo-img">
-      <img src="../Imagenes/funciones4.PNG" alt="Código del ejercicio">
+      <img src="../Imagenes/fibonacci.PNG" alt="Código del ejercicio">
     </div>
   <!-- Ejecución -->
     <div class="codigo-ejecucion">
